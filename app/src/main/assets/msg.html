@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Copycat Msg Form</title>
+<style>
+td {
+	font-size: 12pt;
+}
+</style>
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+
+function isResultOk(d) {
+	if(d.result!=null && d.result===0) {
+		return true;
+	}
+	return false;
+}
+
+function btnPostMsgOnClick() {
+	var msg = $("#eMsg").val();
+	if(msg==null || msg=="") {
+		alert("msg is empty");
+		return;
+	}
+	
+	$.ajax({
+		url: '/msg.do',
+		type: "POST",
+		data:{
+			msg:msg
+		},
+		dataType: "json",
+		success: function(result) {
+			if(isResultOk(result)) {
+				alert("msg sent");
+			}
+			else {
+				alert("Error: " + result.desc);
+			}
+		},
+		
+		error: function(d) {
+			alert("network error: " + JSON.stringify(d) );
+		}
+	});	
+}
+
+$(document).ready(function() {
+	$("#btnPostMsg").click(btnPostMsgOnClick);			
+});
+
+</script>
+</head>
+<body bgcolor=white>
+<div>
+<!-- 	Copycat Msg form -->
+</div>
+
+<div>
+	<form method="POST">
+	
+	
+		<label>Msg:</label>
+		<br/>
+		<textarea id="eMsg" name="eMsg" rows="10" cols="35"></textarea>
+	
+	
+		<br/>
+		<br/>
+		
+		<input id="btnPostMsg" type="button" NAME="Send" VALUE="Send"></input>
+	</form>
+
+</div>
+
+</body>
+</html>
