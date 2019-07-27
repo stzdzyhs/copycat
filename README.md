@@ -10,7 +10,7 @@
 有时，**易用性和安全是矛盾的!**
 
 关于安装:
-请在软件releases页面下载最新的 copycat-v*.zip， 解压成apk文件可直接安装。
+请在软件[releases](https://https://github.com/stzdzyhs/copycat/releases)页面下载最新的 copycat-v*.zip， 解压成apk文件可直接安装。
 或用Android Studio编译代码，通过android sdk的adb工具安装
 
 a tool to copy text from PC to android mobile
